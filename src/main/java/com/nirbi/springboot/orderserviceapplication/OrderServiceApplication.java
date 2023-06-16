@@ -1,6 +1,8 @@
 package com.nirbi.springboot.orderserviceapplication;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +24,9 @@ public class OrderServiceApplication {
 
 	@GetMapping(path = "/orders", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Order>> retrieveOrders() {
-		return new ResponseEntity<>(orderInventory.getOrders(), HttpStatus.OK);
+		List<Order> orderList = orderInventory.getOrders().stream()
+				.sorted(Comparator.comparing(Order::getName).reversed()).collect(Collectors.toList());
+		return new ResponseEntity<>(orderList, HttpStatus.OK);
 	}
 
 	public static void main(String[] args) {
