@@ -25,7 +25,7 @@ public class OrderServiceApplication {
 	@GetMapping(path = "/orders", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Order>> retrieveOrders() {
 		List<Order> orderList = orderInventory.getOrders().stream()
-				.sorted(Comparator.comparing(Order::getName).reversed()).collect(Collectors.toList());
+				.sorted(Comparator.comparing(Order::getQuantity).reversed()).collect(Collectors.toList());
 		return new ResponseEntity<>(orderList, HttpStatus.OK);
 	}
 
