@@ -11,7 +11,7 @@
 	<groupId>com.nirbi.springboot</groupId>
 	<artifactId>order-service-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>order-service-application</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
